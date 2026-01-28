@@ -81,3 +81,17 @@ button {
     justify-content: center;
     width: 16.66%;
 }
+
+#daysForecasts {
+    display: flex;
+    justify-content: space-around;
+}
+
+.daysForecast {
+    width: 14.2%;
+    text-align: center;
+}
+
+.hidden {
+  display: none !important;
+}

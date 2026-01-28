@@ -47,12 +47,12 @@ function loadHourly(hourlyWeatherJson) {
         const hour = `${startTime[startTimePosInString + 1]}${startTime[startTimePosInString + 2]}`;
 
         hourlyWeatherDiv += `<div class="hourForecast" id="hf${i}">
-                <span class="time">${hour}:00</span>
-                <span class="shortForecast">${getWeatherIcon((hourlyForecast[i].shortForecast).toLowerCase(), hourlyForecast[i].isDaytime)}</span>
-                <span class="temperature">${hourlyForecast[i].temperature}&deg;F</span>
-                <span class="probabilityOfPrecipitation">${hourlyForecast[i].probabilityOfPrecipitation.value}%</span>
-                <span class="windSpeed">${hourlyForecast[i].windSpeed}</span>
-                <span class="windDirection">${hourlyForecast[i].windDirection}</span>
+                <span>${hour}:00</span>
+                <span>${getWeatherIcon((hourlyForecast[i].shortForecast).toLowerCase(), hourlyForecast[i].isDaytime)}</span>
+                <span>${hourlyForecast[i].temperature}&deg;F</span>
+                <span>${hourlyForecast[i].probabilityOfPrecipitation.value}%</span>
+                <span>${hourlyForecast[i].windSpeed}</span>
+                <span>${hourlyForecast[i].windDirection}</span>
             </div>
             `;
 
@@ -75,10 +75,15 @@ function loadDaily(dailyWeatherJson) {
     let dailyWeatherDiv = `<div id="daysForecasts">
     `;
 
+    // If its currently daytime, get every afternoons data
+    let even = Number(dailyForecast[0].isDaytime);
+
     for (let i = 0; i < 14; i++) {
-        if (i % 2 === 0) {
+        if (i % 2 != even) {
             dailyWeatherDiv += ` <div class="daysForecast">
+                <span>${dailyForecast[i].name}</span>
                 <img src="${dailyForecast[i].icon}" alt="${dailyForecast[i].shortForecast}">
+                <span>${dailyForecast[i].detailedForecast}</span>
                 </div>    
             `;
         }
@@ -148,7 +153,7 @@ async function formSubmit(e) {
         weatherForecastDiv += loadDaily(dailyWeatherJson);
 
         document.getElementById('weatherForecast').innerHTML = weatherForecastDiv;
-        document.getElementById('daysForecasts').hidden = true;
+        document.getElementById('daysForecasts').classList.toggle('hidden');
         document.getElementById('hourly').checked = true;
         document.getElementById('weatherForecast').hidden = false;
 
@@ -164,13 +169,17 @@ async function formSubmit(e) {
 function timeScale(e) {
     const selectedValue = document.querySelector('input[name="forecastLen"]:checked')?.value;
     if (selectedValue === "Hourly") {
-        document.getElementById("hoursForecasts").hidden = false;
-        document.getElementById("daysForecasts").hidden = true;
-
-    } else if (selectedValue === "Daily") {
-        document.getElementById("hoursForecasts").hidden = true;
-        document.getElementById("daysForecasts").hidden = false;
-
+        document.getElementById('hoursForecasts').classList.toggle('hidden');
+        document.getElementById('daysForecasts').classList.toggle('hidden');
+        document.querySelector('h2').innerHTML = 'Hourly Forecast'
+        return;
+    }
+    
+    if (selectedValue === "Daily") {
+        document.getElementById('hoursForecasts').classList.toggle('hidden');
+        document.getElementById('daysForecasts').classList.toggle('hidden');
+        document.querySelector('h2').innerHTML = 'Daily Forecast'
+        return;
     }
 }
 
