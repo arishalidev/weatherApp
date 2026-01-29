@@ -75,23 +75,11 @@ button {
     margin: .5rem;
 }
 
-
-#daysForecasts {
-    display: flex;
-    justify-content: space-around;
-}
-
-.daysForecast {
-    width: 14.2%;
-    text-align: center;
-}
-
 .hidden {
     display: none !important;
 }
 
 /* Top bar css */
-
 
 #topBar div:not(#latAndLon), #topBar span {
     width: 20%;
@@ -113,3 +101,27 @@ button {
     font-size: 1.2rem;
     text-align: center;
 }
+
+/* Daily Forecast css */
+
+#daysForecasts {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.daysForecast {
+    width: 12.5rem;
+    text-align: center;
+    margin: 1rem;
+
+}
+
+.daysForecast img {
+    text-align: center;
+}
+
+.dailyName {
+    font-size: 1.5rem;
+    text-align: center;
+}
+

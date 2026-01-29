@@ -92,8 +92,8 @@ function loadDaily(dailyWeatherJson) {
     for (let i = 0; i < 14; i++) {
         if (i % 2 != even) {
             dailyWeatherDiv += ` <div class="daysForecast">
-                <span>${dailyForecast[i].name}</span>
-                <img src="${dailyForecast[i].icon}" alt="${dailyForecast[i].shortForecast}">
+                <span class="dailyName">${dailyForecast[i].name}</span> <br>
+                <img src="${dailyForecast[i].icon}" alt="${dailyForecast[i].shortForecast}"><br>
                 <span>${dailyForecast[i].detailedForecast}</span>
                 </div>    
             `;
@@ -195,8 +195,3 @@ function timeScale(e) {
 }
 
 form.addEventListener("submit", formSubmit);
-
-//TODO 
-//Format daily forecasts:
-//give each forecast enough room, move it to new row when theres not enough room
-//style text elements on daily forecasts
