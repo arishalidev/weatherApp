@@ -22,9 +22,9 @@ function loadTopBar(geoCodeApiJson) {
         <span>${name}</span>
         <span>${now.toLocaleTimeString()}</span>  
         
-        <div>
-            <span>Latitude: ${latitude}</span><br>
-            <span>Longitude: ${longitude}</span>
+        <div id="latAndLon">
+            <span>Lat: ${latitude}</span><br>
+            <span>Lon: ${longitude}</span>
         </div>
     </div>
     <h2>Hourly Forecast</h2>
@@ -185,3 +185,10 @@ function timeScale(e) {
 
 form.addEventListener("submit", formSubmit);
 
+//TODO 
+//Format daily forecasts:
+//give each forecast enough room, move it to new row when theres not enough room
+//style text elements on daily forecasts
+
+//format hourly forecasts:
+//labels above each coloum so user knows what each coloum means
