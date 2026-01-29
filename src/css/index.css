@@ -63,15 +63,18 @@ button {
 }
 
 .hourForecast span {
+    display: inline-block;
+    justify-content: center;
+    width: 16.66%;
     font-size: 2rem;
     text-align: center;
 }
 
-.hourForecast span {
-    display: inline-block;
-    justify-content: center;
-    width: 16.66%;
+.labels span {
+    font-size: 1.2rem !important;
+    margin: .5rem;
 }
+
 
 #daysForecasts {
     display: flex;

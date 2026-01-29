@@ -39,6 +39,17 @@ function loadHourly(hourlyWeatherJson) {
     const hourlyForecast = hourlyWeatherJson.properties.periods;
     let hourlyWeatherDiv = `<div id="hoursForecasts">
     `;
+    
+    hourlyWeatherDiv += `<div class="hourForecast labels"}">
+        <span>Time</span>
+        <span>Forecast</span>
+        <span>Tempature</span>
+        <span>Precipitation</span>
+        <span>Wind speed</span>
+        <span>Wind Direction</span>
+    </div>
+    `;
+
 
     for (let i = 0; i < 12; i++) {
 
@@ -189,6 +200,3 @@ form.addEventListener("submit", formSubmit);
 //Format daily forecasts:
 //give each forecast enough room, move it to new row when theres not enough room
 //style text elements on daily forecasts
-
-//format hourly forecasts:
-//labels above each coloum so user knows what each coloum means
